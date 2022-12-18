@@ -335,13 +335,13 @@ MonoBehaviour:
   gamma: 1
   alpha: 0.3
   k: 0.04
-  h: 5
-  cubeSize: 1
+  h: 1.5
+  cubeSize: 2
   kNear: 0.01
   restRho: 10
-  width: 15
-  height: 25
-  depth: 15
+  width: 25
+  height: 30
+  depth: 25
 --- !u!4 &1473081712
 Transform:
   m_ObjectHideFlags: 0
