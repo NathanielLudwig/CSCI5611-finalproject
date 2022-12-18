@@ -16,7 +16,7 @@ public class Fluid : MonoBehaviour
     public float alpha = 0.3f;
     public float k = 0.008f;
     public float h = 3.0f;
-    public float cubeSize = 1.0f;
+    public float cubeSize = 3.0f;
     public float kNear = 0.01f;
     public float restRho = 10.0f;
 
