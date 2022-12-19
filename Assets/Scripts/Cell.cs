@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-public class Cube
+public class Cell
 {
     // A list to store the particles in this cube
     public List<Particle> Particles { get; }
 
     // Constructor to initialize the list of particles
-    public Cube()
+    public Cell()
     {
         Particles = new List<Particle>();
     }
