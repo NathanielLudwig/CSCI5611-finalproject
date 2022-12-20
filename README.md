@@ -9,7 +9,7 @@ Original Paper: http://www.ligum.umontreal.ca/Clavet-2005-PVFS/pvfs.pdf
 
 # Overview of Results
 
-I implemented an SPH fluid simulation in 2D using the Double Density Relaxation algorithm from a paper by Clavet et al. I added some additional features to the simulation, including the ability for the user to control the fluid using the mouse cursor to repel the particles and object interaction and collision. To improve the performance of the simulation, I used a spatial hash table data structure to store the particles.
+I implemented an SPH fluid simulation in 2D using the Double Density Relaxation algorithm from a paper by Clavet et al. The rendering is done with Unity3D. I added some additional features to the simulation, including the ability for the user to control the fluid using the mouse cursor to repel the particles and object interaction and collision. To improve the performance of the simulation, I used a spatial hash table data structure to store the particles.
 
 ## Videos
 https://user-images.githubusercontent.com/37120685/208570746-15e454bb-534e-46f9-ab3e-8c67173b6f3a.mov
@@ -38,7 +38,7 @@ The initial objective of this project was to implement the SPH algorithm and ren
 
 ## Progress Report
 <img width="372" alt="Screenshot 2022-12-19 at 10 59 01 PM" src="https://user-images.githubusercontent.com/37120685/208587409-c671e6bf-5127-42bc-acc9-07b984fcf7df.png">
-Attempts to simulate the fluid in three dimensions were not successful due to performance problems, largely caused by the lack of a spatial data structure. In addition, issues with the relaxation part of the algorithm and improper parameter tuning resulted in unrealistic results during this stage of the project.
+Attempts to simulate the fluid in three dimensions were not successful due to performance problems, largely caused by the lack of a spatial data structure. In addition, issues with the relaxation part of the algorithm and improper parameter tuning resulted in unrealistic fluid during this stage of the project.
 
 # Peer Feedback
 
