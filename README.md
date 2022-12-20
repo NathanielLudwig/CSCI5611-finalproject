@@ -9,7 +9,7 @@ Original Paper: http://www.ligum.umontreal.ca/Clavet-2005-PVFS/pvfs.pdf
 
 # Overview of Results
 
-I implemented an SPH fluid simulation in 2D using the Double Density Relaxation algorithm from a paper by Clavet et al. The rendering is done with Unity3D. I added some additional features to the simulation, including the ability for the user to control the fluid using the mouse cursor to repel the particles and object interaction and collision. To improve the performance of the simulation, I used a spatial hash table data structure to store the particles.
+I implemented a 2D smoothed particle hydrodynamics (SPH) fluid simulation using the Double Density Relaxation algorithm from a paper by Clavet et al. The rendering was done using Unity3D. In addition to the basic functionality of the algorithm, I also added some extra features to the simulation, such as allowing the user to control the fluid using the mouse cursor to repel the particles, drawing fluid with the mouse, and enabling object interaction and collision. To improve the performance of the simulation, I utilized a spatial hash table data structure to store the particles.
 
 ## Videos
 https://user-images.githubusercontent.com/37120685/208570746-15e454bb-534e-46f9-ab3e-8c67173b6f3a.mov
