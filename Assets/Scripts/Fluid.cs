@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class Fluid : MonoBehaviour
     public List<GameObject> ParticleObjects = new();
 
     public GameObject CirclePrefab;
+    public GameObject ObstaclePrefab;
     public int maxParticles = 1000;
     public float gravity = -1.0f;
     public float stiffness = 0.008f;
@@ -16,17 +18,22 @@ public class Fluid : MonoBehaviour
     private SpatialHashTable hashTable;
     public float nearStiffness = 0.01f;
     public float restDensity = 10.0f;
-
+    public Vector2 spherePos = new(30, 10);
+    public float sphereRadius = 2f;
     public float width = 10;
     public float height = 10;
+    public Camera camera;
     
     // Start is called before the first frame update
     private void Start()
     {
+        camera = Camera.main;
         hashTable = new SpatialHashTable(gridSize, cellSize);
-        for (int x = 1; x < 15; x++)
+        var obstacle = Instantiate(ObstaclePrefab, new Vector3(spherePos.x, spherePos.y, 0), Quaternion.identity);
+        obstacle.transform.localScale = new Vector3(2 * sphereRadius, 2 * sphereRadius, 0);
+        for (int x = 1; x < 30; x++)
         {
-            for (int y = 1; y < 15; y++)
+            for (int y = 1; y < 20; y++)
             {
                 Particles.Add(new Particle(new Vector2(x, y), Vector2.zero));
                 ParticleObjects.Add(Instantiate(CirclePrefab, new Vector3(x, y, 0), Quaternion.identity));
@@ -72,6 +79,10 @@ public class Fluid : MonoBehaviour
         if (pos.x > width) pos.x = width;
         if (pos.y < 0) pos.y = 0;
         if (pos.y > height) pos.y = height;
+        if (Vector2.Distance(pos, spherePos) < sphereRadius+1.1f) {
+            Vector2 normal = (pos - spherePos).normalized;
+            pos = (spherePos + normal * (sphereRadius+1.1f)) * 1.01f;
+        }
         particle.Position = pos;
     }
 
@@ -119,7 +130,11 @@ public class Fluid : MonoBehaviour
 
     private void ApplyGravity(Particle particle, float dt)
     {
+        Vector3 mousePos = Input.mousePosition;
+        var worldMousePos = camera.ScreenToWorldPoint(mousePos);
         particle.Velocity += new Vector2(0, gravity) * dt;
+        var fromMouse =  particle.Position - new Vector2(worldMousePos.x, worldMousePos.y);
+        particle.Velocity += fromMouse.normalized * dt;
     }
 
     private void AdvanceToPredictedPosition(Particle particle, float dt)
@@ -127,16 +142,20 @@ public class Fluid : MonoBehaviour
         particle.PreviousPosition = particle.Position;
         particle.Position += particle.Velocity * dt;
     }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Input.mousePosition;
+            var worldMousePos = camera.ScreenToWorldPoint(mousePos);
+            Particles.Add(new Particle(new Vector2(worldMousePos.x, worldMousePos.y), Vector2.zero));
+            ParticleObjects.Add(Instantiate(CirclePrefab, new Vector3(worldMousePos.x, worldMousePos.y, 0), Quaternion.identity));
+        }
+    }
+
     void FixedUpdate()
     {
         Simulate(Time.fixedDeltaTime);
     }
-
-    // private void OnDrawGizmos()
-    // {
-    //     foreach (var particle in Particles)
-    //     {
-    //         Gizmos.DrawSphere(new Vector3(particle.Position.x, particle.Position.y, 0), 1.5f);
-    //     }
-    // }
 }
