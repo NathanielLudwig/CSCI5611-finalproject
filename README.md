@@ -1,5 +1,12 @@
 # CSCI 5611 Final Project Written Report
 Nathaniel Ludwig - ludwi298
+
+Full video presentation: https://drive.google.com/file/d/1Yd6AhZegCXtO207cMlTTnJWwrO64eFZP/view
+
+Slides: https://docs.google.com/presentation/d/1_iSu5DhFxx9hNYVWkSulRMS7FaUH4erkVUwW3LBvjuM/edit?usp=sharing
+
+Original Paper: http://www.ligum.umontreal.ca/Clavet-2005-PVFS/pvfs.pdf
+
 # Overview of Results
 
 I implemented an SPH fluid simulation in 2D using the Double Density Relaxation algorithm from a paper by Clavet et al. I added some additional features to the simulation, including the ability for the user to control the fluid using the mouse cursor to repel the particles and object interaction and collision. To improve the performance of the simulation, I used a spatial hash table data structure to store the particles.
@@ -33,6 +40,13 @@ The initial objective of this project was to implement the SPH algorithm and ren
 <img width="372" alt="Screenshot 2022-12-19 at 10 59 01 PM" src="https://user-images.githubusercontent.com/37120685/208587409-c671e6bf-5127-42bc-acc9-07b984fcf7df.png">
 Attempts to simulate the fluid in three dimensions were not successful due to performance problems, largely caused by the lack of a spatial data structure. In addition, issues with the relaxation part of the algorithm and improper parameter tuning resulted in unrealistic results during this stage of the project.
 
+# Peer Feedback
+
+During the class discussion, I received a few pieces of feedback. Two suggestions were to implement a spatial data structure and add object interaction, which were both incorporated into the final version of the simulation. Another suggestion was to include flowing water from a faucet, but this feature was not successfully implemented in the final version.
+
+# Extension Ideas
+
+Improving the performance of the algorithm, supporting a larger number of fluids, and rendering the simulation in 3D would significantly enhance the realism of the simulation. Additionally, improved visualization techniques, such as the use of shaders, could also contribute to the realism of the fluid. Given more time, it would also be possible to test the fluid in a variety of scenarios and to explore the properties of different types of fluids, including viscosity and elasticity, as described in the original paper.
 
 
 
